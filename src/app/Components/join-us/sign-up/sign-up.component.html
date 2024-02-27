@@ -1,0 +1,74 @@
+
+<div class="container">
+  <h3 class="text-center mb-5">Sign Up</h3>
+  <div class="row text-center">
+    <form class="text-center" [formGroup]="registerForm" (ngSubmit)="register()" >
+      <div class="form-group row pb-4">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Full Name :</label>
+        <div class="col-sm-10">
+          <input type="text"  class="form-control w-25" id="staticName" placeholder="FullName" required minlength="5" formControlName="fullName"
+          [ngClass]="{'is-invalid':(fullName?.touched || fullName?.dirty) && fullName?.invalid}" />
+        </div>
+      </div>
+      <div class="form-group row pb-4">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Email :</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control w-25" id="inputemail" placeholder="Enter your Email" required formControlName="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          [ngClass]="{'is-invalid':(email?.touched || email?.dirty) && email?.invalid}" >
+        </div>
+      </div>
+      <div class="form-group row pb-4">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Mobile Numbers :</label>
+        <div class="col-sm-10" formArrayName="mobileNumber">
+            @for(control of mobileNumber.controls ; track $index){
+                <div [formGroupName]="$index">
+                  <input type="tel" class="form-control w-25 mb-2" id="inputmobile" placeholder="Enter your Mobile Number" required formControlName="mobile" pattern="^01[0125][0-9]{8}$"
+                  [ngClass]="{'is-invalid':(mobileNumber.touched || mobileNumber.dirty) && mobileNumber.invalid}" />
+                  @if(mobileNumber.controls.length !== 1) {
+                    <button type="button" class="btn btn-danger btn-sm d-block m-start mb-2" (click)="removeMobile($index)">Remove</button>
+                  }
+                </div>
+            }
+            <button type="button" class="btn btn-primary btn-sm d-block m-start" (click)="addMobile()">Add Another Mobile Number</button>
+        </div>
+      </div>
+
+
+      <div class="form-group row pb-4">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Address :</label>
+        <div class="col-sm-10" formArrayName="address">
+            @for(control of address.controls ; track $index){
+                <div [formGroupName]="$index">
+                  <input type="text" class="form-control w-25 mb-2" id="inputcity" required formControlName="city" placeholder="Enter your City">
+                  <input type="number" class="form-control w-25 mb-2" id="inputpostCode" required formControlName="postCode" placeholder="Enter your PostCode">
+                  <input type="text" class="form-control w-25 mb-2" id="inputstreet" required formControlName="street" placeholder="Enter your Street">
+                  @if(address.controls.length !== 1) {
+                      <button type="button" class="btn btn-danger btn-sm d-block m-start" (click)="removeAddress($index)">Remove</button>
+                  }
+                </div>
+            }
+            <button type="button" class="btn btn-primary btn-sm d-block m-start" (click)="addAddress()">Add Another Address</button>
+        </div>
+
+      </div>
+      <div class="form-group row pb-4">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Password :</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control w-25" id="inputPassword" placeholder="Password" required formControlName="password" minlength="5"
+          [ngClass]="{'is-invalid':(password?.touched || password?.dirty) && password?.invalid}">
+        </div>
+      </div>
+      <div class="form-group row pb-4">
+        <div class="col-sm-10 text-lg-start m-auto pb-4">
+          <span class="m-4">Allready have an account ?</span>
+          <button type="button" class="btn btn-primary btn-sm" routerLink="/login">Login</button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary d-block m-auto">Sumbit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>

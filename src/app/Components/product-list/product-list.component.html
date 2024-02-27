@@ -1,0 +1,57 @@
+
+
+  <div class="container pt-5">
+
+    <!-- <select id="search" class="form-control mt-5 mb-4 w-50 m-auto" [(ngModel)]="filterProducts">
+      <option selected value="All" >All Product</option>
+      <option value ="men's clothing"  >Clothes</option>
+      <option value = 'jewelery' >Jewelery</option>
+      <option value = 'electronics' >Electronics</option>
+      <option value="women's clothing">Women's clothing</option>
+      </select> -->
+    <div class="row ">
+      <!-- <input type="text" class="form-control mt-5 mb-4  m-auto" placeholder="Search" [(ngModel)]="filterProductsInput" > -->
+  <h2 class="text-center mb-5">Products</h2>
+      @for(product of filterProduct ;track product.ID){
+      <div  class="col-md-4  mb-3"   >
+        <div appProductcard class="card text-sm-center" style="width: 18rem;">
+        @if(product.isPurched){
+        <h5>Thanks for purchasing from our store {{this.Name}}</h5>
+        }@else{
+          <img  class="card-img-top" style="width: 100px; height: 100px; margin: auto;" [src]="product.Img" alt="Card image cap">
+        }
+          <div  class="card-body">
+            <h5 class="card-title">{{product.Name | uppercase }}</h5>
+            </div>
+
+            <h6 [ngStyle]="{color: product.Price < 10000 ? 'green' : 'red'}">{{product.Price }}</h6>
+            <h6>{{product.CredetCardNumber | productCard}}</h6>
+            <h5 [class]="product.Quantity <= 1 ? 'bg-danger' : 'bg-success'">{{product.Quantity}}</h5>
+            <div>
+              @switch (product.Quantity) {
+                @case (0){
+                  <h5 class="text-danger">Out Of Stock{{product.Quantity}}</h5>
+                }
+                @case(1){
+                  <h5 class="text-danger">last one item {{product.Quantity}}</h5>
+                }
+                @case(2){
+                  <h5>last two items {{product.Quantity}}</h5>
+                }
+                @default{
+                  <h5>{{product.Quantity}}</h5>
+                }
+              }
+            <p class="card-text">{{product.Material}}</p>
+            <button [routerLink]="['/product',product.ID]" class="btn btn-info">Details</button>
+            <button href="#" (click)="togglePurchase(product.ID)"  (click)="addToCart(product)" class="btn btn-primary m-auto d-block mt-2" [disabled]="product.Quantity == 0">Buy <i class="fa-solid fa-bag-shopping"></i></button>
+          </div>
+        </div>
+      </div>
+      }
+        @empty {
+        <h2 class="text-center">No Products Founded !</h2>
+        }
+      </div>
+  </div>
+

@@ -1,0 +1,79 @@
+{
+  "Pruducts": [
+    {
+      "id": "3",
+      "name": "Product 3",
+      "price": 300,
+      "quantity": 30,
+      "category": "Clothes",
+      "maxQuantity": 0
+    },
+    {
+      "id": "5",
+      "name": "Product 5",
+      "price": 400,
+      "quantity": 40,
+      "category": "Glasses",
+      "maxQuantity": 40
+    },
+    {
+      "id": "6",
+      "name": "Product 6",
+      "price": 400,
+      "quantity": 40,
+      "category": "Glasses",
+      "maxQuantity": 40
+    }
+  ],
+  "Users": [
+    {
+      "id": "dcbb",
+      "fullName": "Hesham Shaban",
+      "email": "heshamshaban@gmail.com",
+      "password": "12345",
+      "mobileNumber": [
+        ""
+      ],
+      "address": [
+        "Bani suef egypt 62511"
+      ]
+    }
+  ],
+  "Login": [
+    {
+      "id": "da17",
+      "email": "heshamshaban@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "f140",
+      "email": "heshamshaban@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "bcb9",
+      "email": "heshamshaban@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "f3f0",
+      "email": "heshamshaban@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "fa3c",
+      "email": "heshamshaban@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "5f36",
+      "email": "heshamshaban@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "340b",
+      "email": "heshamshaban@gmail.com",
+      "password": "12345"
+    }
+  ]
+}

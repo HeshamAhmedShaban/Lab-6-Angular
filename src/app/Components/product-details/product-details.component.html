@@ -1,0 +1,23 @@
+
+<div class="container mt-5 mb-5">
+  <div class="row ">
+    <div class="card text-center d-block m-auto w-25" style="width: 18rem;">
+      <img class="card-img-top" style="width: 100px; height: 100px; margin: auto;" [src]="oneProduct.Img" alt="Card image cap">
+
+      <div class="card-body">
+        <h5 class="card-text">{{oneProduct.Name | uppercase }}</h5>
+        <h6 [ngStyle]="{color: oneProduct.Price < 10000 ? 'green' : 'red'}">{{oneProduct.Price}}</h6>
+        <h6>{{oneProduct.CredetCardNumber | productCard}}</h6>
+        <h5 [class]="oneProduct.Quantity <= 1 ? 'bg-danger' : 'bg-success'">{{oneProduct.Quantity}}</h5>
+        <div>
+          <p class="card-text">{{oneProduct.Material}}</p>
+        </div>
+        <button routerLink="/card"   class="btn btn-primary m-auto d-block" [disabled]="oneProduct.Quantity == 0">Add to Card <i class="fa-solid fa-bag-shopping"></i></button>
+      </div>
+    </div>
+  </div>
+
+<button class="btn btn-primary m-auto d-block mt-5" routerLink="/product">Go Back</button>
+
+</div>
+
